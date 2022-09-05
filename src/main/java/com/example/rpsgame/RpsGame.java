@@ -24,6 +24,8 @@ public class RpsGame {
 
             playerChoice = scanner.nextLine();
 
+            playerChoice = playerChoice.trim();
+
             playerChoice = playerChoice.toLowerCase();
 
             String cpuChoiceString;
