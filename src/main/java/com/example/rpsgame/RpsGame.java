@@ -4,11 +4,6 @@ import java.util.Scanner;
 
 public class RpsGame {
     public static void main(String[] args) {
-        final String ROCK = "Rock";
-
-        final String PAPER = "Paper";
-
-        final String SCISSORS = "Scissors";
 
         byte playerResult = 0;
 
@@ -29,33 +24,50 @@ public class RpsGame {
             playerChoice = scanner.nextLine();
 
             playerChoice = playerChoice.toLowerCase();
+
             String cpuChoiceString;
+
+
             cpuChoice = (int)(Math.random() * 3) + 1;
-
-
 
             if (playerChoice.equals("rock") || playerChoice.equals("paper") || playerChoice.equals("scissors")) {
 
                 cpuChoiceString = cpuGamePlay(cpuChoice);
                 System.out.println("Computer choice: " + cpuChoiceString);
 
-                switch (playerChoice) {
-                    case "rock" -> {
-                        System.out.println("You have chosen a rock!");
-                        playerResult++;
-                        System.out.println(playerResult);
-                    }
-                    case "paper" -> {
-                        System.out.println("You have chosen a paper!");
-                        playerResult++;
-                        System.out.println(playerResult);
-                    }
-                    case "scissors" -> {
-                        System.out.println("You have chosen a scissors!");
-                        playerResult++;
-                        System.out.println(playerResult);
-                    }
-                    default -> System.out.println("What do you mean? Please choose between rock, paper or scissors!");
+                if (playerChoice.equals(cpuChoiceString)) {
+                    System.out.println(playerChoice + " vs " + cpuChoiceString + " - There is no winner!");
+                    i--;
+                }
+
+                else if (playerChoice.equals("rock") && cpuChoiceString.equals("scissors")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You win!"));
+                    playerResult++;
+                }
+
+                else if (playerChoice.equals("rock") && cpuChoiceString.equals("paper")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You loose!"));
+                    cpuResult++;
+                }
+
+                else if (playerChoice.equals("paper") && cpuChoiceString.equals("rock")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You win!"));
+                    playerResult++;
+                }
+
+                else if (playerChoice.equals("paper") && cpuChoiceString.equals("scissors")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You loose!"));
+                    cpuResult++;
+                }
+
+                else if (playerChoice.equals("scissors") && cpuChoiceString.equals("paper")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You win!"));
+                    playerResult++;
+                }
+
+                else if (playerChoice.equals("scissors") && cpuChoiceString.equals("rock")) {
+                    System.out.println((playerChoice + " vs " + cpuChoiceString + " - You loose!"));
+                    cpuResult++;
                 }
             }
             else {
@@ -63,12 +75,12 @@ public class RpsGame {
                 i--;
             }
         }
-            cpuChoice = (int)(Math.random() * 3) + 1;
-
-
-
-//
-
+        if (playerResult == cpuResult)
+            System.out.println("It's a draw!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
+        else if (playerResult > cpuResult)
+            System.out.println("You won the game!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
+        else
+            System.out.println("You lost the game!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
 
     }
 
@@ -94,3 +106,4 @@ public class RpsGame {
         }
     }
 }
+
