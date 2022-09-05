@@ -3,6 +3,7 @@ package com.example.rpsgame;
 import java.util.Scanner;
 
 public class RpsGame {
+
     public static void main(String[] args) {
 
         byte playerResult = 0;
@@ -75,13 +76,13 @@ public class RpsGame {
                 i--;
             }
         }
+
         if (playerResult == cpuResult)
             System.out.println("It's a draw!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
         else if (playerResult > cpuResult)
             System.out.println("You won the game!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
         else
             System.out.println("You lost the game!\n" + "You: " + playerResult + " vs Computer: " + cpuResult);
-
     }
 
     private static String cpuGamePlay(int cpuChoice) {
