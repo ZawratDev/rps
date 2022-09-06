@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class RpsGame {
 
+
     public static void main(String[] args) {
 
         byte playerResult = 0;
@@ -16,17 +17,23 @@ public class RpsGame {
 
         Scanner scanner = new Scanner(System.in);
 
-//        System.out.println(cpuChoice);
 
         for (byte i = 1; i <= 5; i++) {
 
-            System.out.print("Choose your weapon (rock, paper or scissors): ");
+            System.out.print("Choose your weapon (\"rock\", \"paper\" or \"scissors\") or type \"exit\": ");
 
             playerChoice = scanner.nextLine();
 
             playerChoice = playerChoice.trim();
 
             playerChoice = playerChoice.toLowerCase();
+
+            if (playerChoice.equals("exit")) {
+
+                System.out.println("Thank you for the game, see you later!");
+
+                System.exit(0);
+            }
 
             String cpuChoiceString;
 
@@ -103,9 +110,12 @@ public class RpsGame {
                 return cpuChoiceString;
             }
             default -> {
-                cpuChoiceString = "Error - unacceptable computer choice";
+                cpuChoiceString = "Error - unacceptable computer's choice";
                 return cpuChoiceString;
             }
+        }
+        private static String showResult; {
+            System.out.println("You: " + playerResult + " vs Computer: " + cpuResult);
         }
     }
 }
